@@ -6,6 +6,12 @@ def printBoard(board):
     print("2 " + board["A2"] + " " + board["B2"] + " " + board["C2"])
 
 
+def verifyClientPosition(position, board):
+    if(position in board):
+        return True
+    return False
+
+
 def verifyBoard(board):
     pass
 
@@ -21,8 +27,13 @@ def playTicTacToe():
     gameFinished = False
 
     while(not gameFinished):
-        print("Just in while")
-        gameFinished = True
+        clientPosition = input("Enter your desired position:")
+        while(not verifyClientPosition(clientPosition.upper(), board)):
+            clientPosition = input(
+                "The positon you entered is wrong, please enter a correct position:")
+
+        board[clientPosition.upper()] = "X"
+        printBoard(board)
 
 
 playTicTacToe()
