@@ -1,3 +1,6 @@
+import random
+import string
+
 
 def printBoard(board):
     print("  A B C")
@@ -51,6 +54,18 @@ def verifyBoard(clientPositions):
     return False
 
 
+def computerRandomPlay(takenPositionsInBoard):
+    position = takenPositionsInBoard[0]
+    # will always be true at the begining, because the client always starts first.
+    while position in takenPositionsInBoard:
+        number = random.randint(0, 2)
+        letter = random.choice(string.ascii_letters[0:3])
+        position = (letter + str(number)).upper()
+        print("Computer position: " + position)
+
+    return position
+
+
 def playTicTacToe():
     print("Hello and welcome to The Amazing Tic Tac Toe Game that no one has ever seen before!")
 
@@ -64,6 +79,7 @@ def playTicTacToe():
     clientIsWinner = False
     computerIsWinner = False
     gameIsAtie = False
+    numberOfTurns = 0
 
     printBoard(board)
     gameFinished = False
@@ -90,6 +106,30 @@ def playTicTacToe():
         printBoard(board)
 
         gameFinished = verifyBoard(clientPositions)
+        numberOfTurns += 1
+        print("Number of turns: " + str(numberOfTurns))
+
+        if gameFinished:
+            clientIsWinner = True
+            break
+        elif numberOfTurns == 9:
+            gameIsAtie = True
+            break
+        else:
+            computerPosition = computerRandomPlay(takenPositionsInBoard)
+
+        ComputerPositions.append(computerPosition)
+        takenPositionsInBoard.append(computerPosition)
+        board[computerPosition] = "O"
+        printBoard(board)
+
+        gameFinished = verifyBoard(ComputerPositions)
+        numberOfTurns += 1
+        print("Number of turns: " + str(numberOfTurns))
+
+        if gameFinished:
+            computerIsWinner = True
+            break
 
     if(gameIsAtie):
         print("Wow it's a tie!")
