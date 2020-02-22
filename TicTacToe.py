@@ -61,6 +61,9 @@ def playTicTacToe():
     takenPositionsInBoard = []
     clientPositions = []
     ComputerPositions = []
+    clientIsWinner = False
+    computerIsWinner = False
+    gameIsAtie = False
 
     printBoard(board)
     gameFinished = False
@@ -88,7 +91,12 @@ def playTicTacToe():
 
         gameFinished = verifyBoard(clientPositions)
 
-    print("Winner!")
+    if(gameIsAtie):
+        print("Wow it's a tie!")
+    elif(clientIsWinner):
+        print("Congratulations! You won!!")
+    elif(computerIsWinner):
+        print("Oops, looks like you lost.")
 
 
 def main():
@@ -102,7 +110,7 @@ def main():
         else:
             print("Invalid input!")
 
-        clientAnswer = input("Would you like to play another game? y/n :")
+        clientAnswer = input("Would you like to play Tic Tac Toe? y/n :")
 
     print("Goodbye!")
 
