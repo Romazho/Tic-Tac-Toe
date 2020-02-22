@@ -12,6 +12,11 @@ def verifyClientInput(input, board):
     return False
 
 
+def takeClientInput():
+    clientInput = input("Enter your desired position or 'Q' to quit:")
+    return clientInput.upper()
+
+
 def verifyBoard(board):
     pass
 
@@ -32,18 +37,15 @@ def playTicTacToe():
     clientInput = ""
 
     while(not gameFinished):
-        clientInput = input("Enter your desired position or 'Q' to quit:")
-        clientInput = clientInput.upper()
+        clientInput = takeClientInput()
 
         while(not verifyClientInput(clientInput, board)):
             print("Invalid character.")
-            clientInput = input("Enter your desired position or 'Q' to quit:")
-            clientInput = clientInput.upper()
+            clientInput = takeClientInput()
 
         while (clientInput in takenPositionsInBoard):
             print("This position is taken")
-            clientInput = input("Enter your desired position or 'Q' to quit:")
-            clientInput = clientInput.upper()
+            clientInput = takeClientInput()
 
         if clientInput == "Q":
             break
