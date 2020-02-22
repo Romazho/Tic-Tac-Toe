@@ -6,8 +6,8 @@ def printBoard(board):
     print("2 " + board["A2"] + " " + board["B2"] + " " + board["C2"])
 
 
-def verifyClientPosition(position, board):
-    if(position in board):
+def verifyClientInput(input, board):
+    if(input in board or input == "Q"):
         return True
     return False
 
@@ -23,16 +23,34 @@ def playTicTacToe():
         "A0": "_", "A1": "_", "A2": "_", "B0": "_", "B1": "_", "B2": "_", "C0": "_", "C1": "_", "C2": "_"
     }
 
+    takenPositionsInBoard = []
+    clientPositions = []
+    ComputerPositions = []
+
     printBoard(board)
     gameFinished = False
+    clientInput = ""
 
     while(not gameFinished):
-        clientPosition = input("Enter your desired position:")
-        while(not verifyClientPosition(clientPosition.upper(), board)):
-            clientPosition = input(
-                "The positon you entered is wrong, please enter a correct position:")
+        clientInput = input("Enter your desired position or 'Q' to quit:")
+        clientInput = clientInput.upper()
 
-        board[clientPosition.upper()] = "X"
+        while(not verifyClientInput(clientInput, board)):
+            print("Invalid character.")
+            clientInput = input("Enter your desired position or 'Q' to quit:")
+            clientInput = clientInput.upper()
+
+        while (clientInput in takenPositionsInBoard):
+            print("This position is taken")
+            clientInput = input("Enter your desired position or 'Q' to quit:")
+            clientInput = clientInput.upper()
+
+        if clientInput == "Q":
+            break
+
+        takenPositionsInBoard.append(clientInput)
+
+        board[clientInput] = "X"
         printBoard(board)
 
 
