@@ -52,7 +52,7 @@ def verifyBoard(clientPositions):
 
 
 def playTicTacToe():
-    print("Hello and welcome to The Amazing Tic Tac Toe App that no one has ever seen before!")
+    print("Hello and welcome to The Amazing Tic Tac Toe Game that no one has ever seen before!")
 
     board = {
         "A0": "_", "A1": "_", "A2": "_", "B0": "_", "B1": "_", "B2": "_", "C0": "_", "C1": "_", "C2": "_"
@@ -91,4 +91,20 @@ def playTicTacToe():
     print("Winner!")
 
 
-playTicTacToe()
+def main():
+
+    clientAnswer = input("Would you like to play Tic Tac Toe? y/n :")
+
+    while (clientAnswer != "n"):
+
+        if(clientAnswer == "y"):
+            playTicTacToe()
+        else:
+            print("Invalid input!")
+
+        clientAnswer = input("Would you like to play another game? y/n :")
+
+    print("Goodbye!")
+
+
+main()
