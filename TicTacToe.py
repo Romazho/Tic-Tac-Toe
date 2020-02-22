@@ -17,8 +17,38 @@ def takeClientInput():
     return clientInput.upper()
 
 
-def verifyBoard(board):
-    pass
+def verifyBoard(clientPositions):
+    if "A0" in clientPositions:
+        if "A1" in clientPositions:
+            if "A2" in clientPositions:
+                return True
+        if "B0" in clientPositions:
+            if "C0" in clientPositions:
+                return True
+        if "B1" in clientPositions:
+            if "C2" in clientPositions:
+                return True
+
+    if "B1" in clientPositions:
+        if "C0" in clientPositions:
+            if "A2" in clientPositions:
+                return True
+        if "B0" in clientPositions:
+            if "B2" in clientPositions:
+                return True
+        if "A1" in clientPositions:
+            if "C1" in clientPositions:
+                return True
+
+    if "C2" in clientPositions:
+        if "C1" in clientPositions:
+            if "C0" in clientPositions:
+                return True
+        if "B2" in clientPositions:
+            if "A2" in clientPositions:
+                return True
+
+    return False
 
 
 def playTicTacToe():
@@ -51,9 +81,14 @@ def playTicTacToe():
             break
 
         takenPositionsInBoard.append(clientInput)
+        clientPositions.append(clientInput)
 
         board[clientInput] = "X"
         printBoard(board)
+
+        gameFinished = verifyBoard(clientPositions)
+
+    print("Winner!")
 
 
 playTicTacToe()
