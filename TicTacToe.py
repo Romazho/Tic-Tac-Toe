@@ -141,16 +141,17 @@ def playTicTacToe():
 
 def main():
 
-    clientAnswer = input("Would you like to play Tic Tac Toe? y/n :")
+    clientAnswer = "Y"
 
-    while (clientAnswer != "n"):
+    while (clientAnswer != "N"):
 
-        if(clientAnswer == "y"):
+        if(clientAnswer == "Y"):
             playTicTacToe()
         else:
             print("Invalid input!")
 
-        clientAnswer = input("Would you like to play Tic Tac Toe? y/n :")
+        clientAnswer = input(
+            "Would you like to play Tic Tac Toe again? y/n :").upper()
 
     print("Goodbye!")
 
