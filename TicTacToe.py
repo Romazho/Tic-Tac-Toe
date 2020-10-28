@@ -56,7 +56,7 @@ def verifyBoard(clientPositions):
 
 def computerRandomPlay(takenPositionsInBoard):
     position = takenPositionsInBoard[0]
-    # will always be true at the begining, because the client always starts first. "test change"
+    # will always be true at the begining, because the client always starts first.
     while position in takenPositionsInBoard:
         number = random.randint(0, 2)
         letter = random.choice(string.ascii_letters[0:3])
