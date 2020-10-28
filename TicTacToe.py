@@ -56,13 +56,13 @@ def verifyBoard(clientPositions):
 
 def computerRandomPlay(takenPositionsInBoard):
     position = takenPositionsInBoard[0]
-    # will always be true at the begining, because the client always starts first.
+    # will always be true at the begining, because the client always starts first. "test change"
     while position in takenPositionsInBoard:
         number = random.randint(0, 2)
         letter = random.choice(string.ascii_letters[0:3])
         position = (letter + str(number)).upper()
-        print("Computer position: " + position)
 
+    print("Computer position: " + position)
     return position
 
 
@@ -141,17 +141,16 @@ def playTicTacToe():
 
 def main():
 
-    clientAnswer = "Y"
+    clientAnswer = input("Would you like to play Tic Tac Toe? y/n :")
 
-    while (clientAnswer != "N"):
+    while (clientAnswer != "n"):
 
-        if(clientAnswer == "Y"):
+        if(clientAnswer == "y"):
             playTicTacToe()
         else:
             print("Invalid input!")
 
-        clientAnswer = input(
-            "Would you like to play Tic Tac Toe again? y/n :").upper()
+        clientAnswer = input("Would you like to play Tic Tac Toe? y/n :")
 
     print("Goodbye!")
 
